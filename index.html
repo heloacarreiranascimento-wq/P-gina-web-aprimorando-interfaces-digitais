@@ -109,8 +109,138 @@
             <li>Promove respeito e confiança entre as pessoas.</li>
         </ul>
     </div>
-
-    <div class="rodape">
         
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Botão de Curtidas</title>
+  <style>
+    /* Reset básico e centralização na página */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background-color: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Container do Botão */
+    .like-container {
+      background-color: #ffffff;
+      padding: 24px 32px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+      text-align: center;
+    }
+
+    /* Estilo do Botão */
+    .like-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 12px 24px;
+      font-size: 18px;
+      font-weight: 600;
+      color: #4b5563;
+      background-color: #f3f4f6;
+      border: 2px solid transparent;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      outline: none;
+      user-select: none;
+    }
+
+    /* Ícone do Coração */
+    .heart-icon {
+      font-size: 22px;
+      transition: transform 0.2s ease;
+    }
+
+    /* Separador vertical suave */
+    .divider {
+      width: 1px;
+      height: 18px;
+      background-color: #d1d5db;
+      transition: background-color 0.25s ease;
+    }
+
+    /* Contador */
+    .like-count {
+      font-size: 18px;
+      font-weight: 700;
+    }
+
+    /* Efeitos de Hover */
+    .like-btn:hover {
+      background-color: #e5e7eb;
+      transform: translateY(-2px);
+    }
+
+    .like-btn:active {
+      transform: translateY(0);
+    }
+
+    /* Estado quando o botão está CURTIDO */
+    .like-btn.liked {
+      background-color: #fee2e2;
+      color: #dc2626;
+      border-color: #fca5a5;
+    }
+
+    .like-btn.liked .heart-icon {
+      transform: scale(1.2);
+    }
+
+    .like-btn.liked .divider {
+      background-color: #fca5a5;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="like-container">
+    <button class="like-btn" id="likeBtn" onclick="toggleLike()">
+      <span class="heart-icon">♥</span>
+      <span id="btnText">Gostar</span>
+      <span class="divider"></span>
+      <span class="like-count" id="likeCount">42</span>
+    </button>
+  </div>
+
+  <script>
+    let isLiked = false;
+    let count = 42;
+
+    function toggleLike() {
+      const btn = document.getElementById('likeBtn');
+      const countElement = document.getElementById('likeCount');
+      const textElement = document.getElementById('btnText');
+
+      if (!isLiked) {
+        count++;
+        btn.classList.add('liked');
+        textElement.innerText = 'Gostado';
+        isLiked = true;
+      } else {
+        count--;
+        btn.classList.remove('liked');
+        textElement.innerText = 'Gostar';
+        isLiked = false;
+      }
+
+      countElement.innerText = count;
+    }
+  </script>
+
 </body>
 </html>
