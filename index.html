@@ -114,71 +114,38 @@
    <article>
 
   <title>Botões de Interação</title>
-  <style>
-    
-
-    .btn:hover {
-      transform: scale(1.05);
-    }
-
-    .btn:active {
-      transform: scale(0.95);
-    }
-
-    /* Botão de Like */
-    .btn-like {
-      background-color: #007bff;
-      color: white;
-    }
-
-    .btn-like:hover {
-      background-color: #0056b3;
-    }
-
-    /* Botão de Coração */
-    .btn-heart {
-      background-color: #ff4d6d;
-      color: white;
-    }
-
-    .btn-heart:hover {
-      background-color: #c9184a;
-    }
-
-    /* Estado ativado do coração */
-    .btn-heart.active {
-      background-color: #800f2f;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
   <div class="container">
-    <button class="btn btn-like" onclick="incrementarLike()">
-      👍 Like <span id="contador">0</span>
+    <button class="btn" id="btn-like">
+      👍 Like <span id="count-like">0</span>
     </button>
 
-    <button class="btn btn-heart" id="heartBtn" onclick="toggleCoracao()">
-      ❤️ <span id="heartText">Curtir</span>
+    <button class="btn" id="btn-heart">
+      ❤️ Coração <span id="count-heart">0</span>
     </button>
   </div>
 
   <script>
     let likes = 0;
+    let hearts = 0;
 
-    function incrementarLike() {
+    const btnLike = document.getElementById('btn-like');
+    const btnHeart = document.getElementById('btn-heart');
+    const countLike = document.getElementById('count-like');
+    const countHeart = document.getElementById('count-heart');
+
+    btnLike.addEventListener('click', () => {
       likes++;
-      document.getElementById('contador').innerText = likes;
-    }
+      countLike.textContent = likes;
+    });
 
-    function toggleCoracao() {
-      const heartBtn = document.getElementById('heartBtn');
-      const heartText = document.getElementById('heartText');
-      
-      heartBtn.classList.toggle('active');
-      
-      if (heartBtn.classList.contains('active')) {
-        heartText.innerText = 'Amou!';
-      } else {
-        heartText.innerText = 'Curtir';
-    } 
+    btnHeart.addEventListener('click', () => {
+      hearts++;
+      countHeart.textContent = hearts;
+    });
+  </script>
+</body>
+</html>
