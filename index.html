@@ -112,13 +112,108 @@
     </div>
         
    <article>
+    
+  <title>Botões de Interação</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: #f4f4f9;
+      margin: 0;
+    }
 
-    <button class="like-button" onclick="this.classList.toggle('active')">
-  <svg class="heart-icon" viewBox="0 0 24 24">
-    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-  </svg>
-  <span class="like-text">Curtir</span>
-</button>
+    .container {
+      display: flex;
+      gap: 15px;
+    }
+
+    .btn {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 20px;
+      font-size: 16px;
+      font-weight: bold;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s, background-color 0.2s;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+    }
+
+    .btn:active {
+      transform: scale(0.95);
+    }
+
+    /* Botão de Like */
+    .btn-like {
+      background-color: #007bff;
+      color: white;
+    }
+
+    .btn-like:hover {
+      background-color: #0056b3;
+    }
+
+    /* Botão de Coração */
+    .btn-heart {
+      background-color: #ff4d6d;
+      color: white;
+    }
+
+    .btn-heart:hover {
+      background-color: #c9184a;
+    }
+
+    /* Estado ativado do coração */
+    .btn-heart.active {
+      background-color: #800f2f;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <button class="btn btn-like" onclick="incrementarLike()">
+      👍 Like <span id="contador">0</span>
+    </button>
+
+    <button class="btn btn-heart" id="heartBtn" onclick="toggleCoracao()">
+      ❤️ <span id="heartText">Curtir</span>
+    </button>
+  </div>
+
+  <script>
+    let likes = 0;
+
+    function incrementarLike() {
+      likes++;
+      document.getElementById('contador').innerText = likes;
+    }
+
+    function toggleCoracao() {
+      const heartBtn = document.getElementById('heartBtn');
+      const heartText = document.getElementById('heartText');
+      
+      heartBtn.classList.toggle('active');
+      
+      if (heartBtn.classList.contains('active')) {
+        heartText.innerText = 'Amou!';
+      } else {
+        heartText.innerText = 'Curtir';
+      }
+    }
+  </script>
+
+</body>
+</html>
     
 
   
